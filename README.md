@@ -1,0 +1,1 @@
+Este repositório contém os códigos desenvolvidos na disciplina de MAP3121 - Métodos Numéricos e Aplicações, da Escola Politécnica da Universidade de São Paulo, no ano de 2022.
