@@ -1,0 +1,4 @@
+Versões do Python utilizadas para teste:
+3.7.13
+3.8.5
+3.9.10
