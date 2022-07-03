@@ -79,7 +79,7 @@ def integral_a_to_b(f, a, b, n):
 
   sum = sum*l # Finaliza a aplicação da fórmula geral para [a,b] multiplicando por (b-a)/2
 
-  print("Tempo:", time.time()-inicio)
+  #print("Tempo:", time.time()-inicio)
 
   return sum # Retorna o valor final da soma, aproximadamente a integral definida
 
