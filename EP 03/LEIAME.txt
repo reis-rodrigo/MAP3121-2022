@@ -1,0 +1,97 @@
+Versões do Python utilizadas para teste:
+- Python 3.7.13
+- Python 3.10.4
+
+Funcionamento do Programa (descrição das funções):
+- Funções importadas das Tarefas 1 e 2 de MAP3121:
+  -- nos_pesos(n)
+  -- integral_a_to_b(f, a, b, n)
+  -- decompLU(a, b, c)
+  -- resolveSistemaTridiagonal(a, b, c, d)
+
+- Funções Principais
+  -- pontos(n)
+	input: inteiro n número de nós igualmente espaçados dentro de [0,1]
+	output: lista com os n+2 pontos igualmente espaçados em [0,1]
+
+  -- fxphi(f, n)
+	input: função f(x), inteiro número de pontos n
+	output: np.array com os produtos escalares <f, phi_i> para cada phi dos n pontos 
+	Obs.: é necessário declarar f como um objeto da classe FUNÇÃO:
+		f = lambda x : "expressão" ou def f(x): return "expressão"
+
+  -- phi_i(point, x, i)
+	input: float 'point', lista x dos nós em [0,1]
+	       inteiro i da posição atual na lista x
+	output: valor de phi_i no ponto 'point'
+	Obs.: nas rotinas desenvolvidas, a lista x sempre foi definida a partir de pontos(n) ou pontos_L(L, n)
+
+  -- Caso Simplificado 1: k(x) = 1, q(x) = 0, [0,1]:
+    -- vector_a(n)
+	  input: inteiro n de pontos a considerar
+	  output: np.array que representa a diagonal abaixo da principal na simplificação k(x) = 1, q(x) = 0 em [0,1]
+
+    -- vector_b(n)
+	  input: inteiro n de pontos a considerar
+	  output: np.array que representa a diagonal abaixo da principal na simplificação k(x) = 1, q(x) = 0 em [0,1]
+
+    -- vector_c(n)
+	  input: inteiro n de pontos a considerar
+	  output: np.array que representa a diagonal abaixo da principal na simplificação k(x) = 1, q(x) = 0 em [0,1]
+
+    -- u(f, point, n)
+	  input: função f(x), float 'point' a calcular a aproximação u_barra, número de pontos n
+	  output: float valor de u_barra no ponto 'point'
+
+  -- Caso Simplificado 2: [0,1], condições não-homogêneas:
+    -- u_non_homogeneous(f, k_prime, q, a, b, n, point)
+	  input: funções f(x), k_prime(x), q(x), float a, b tais que u(0) = a, u(1) = b, inteiro n, float point
+	  output: valor da aproximação u_barra para condições não-homogêneas no ponto 'point'
+	  Obs.: é necessário declarar f, k_prime, q como objetos da classe FUNÇÃO:
+		f = lambda x : "expressão" ou def f(x): return "expressão"
+		...
+
+  -- Caso Geral: 
+    -- pontos_L(L, n)
+	  input: float L comprimento do intervalo [0,L], inteiro n número de pontos do intervalo
+	  output: np.array com os n+2 pontos igualmente espaçados em [0,L]
+
+    -- fxphi_L(f, L, n)
+	  input: função f(x), float comprimento do intervalo L, inteiro número de pontos n
+	  output: np.array com os produtos escalares <f, phi_i> para cada phi dos n pontos 
+	  Obs.: é necessário declarar f como um objeto da classe FUNÇÃO:
+		f = lambda x : "expressão" ou def f(x): return "expressão"
+
+    -- phixphi_geral(L, k, q, i, j, n, x)
+	  input: float L comprimento do intervalo, funções k(x), q(x), inteiros i, j índices a serem utilizados,
+	         número de pontos n, lista x dos nós no intervalo
+	  output: float produto interno entre phi_i e phi_j
+	  Obs.: é necessário declarar k e q como objetos da classe FUNÇÃO:
+		f = lambda x : "expressão" ou def f(x): return "expressão"
+
+    -- u_L(f, k, q, L, point, n)
+	  input: funções f(x), k(x), q(x), float L comprimento do intervalo, float point, inteiro n número de pontos
+	  output: valor de u_barra para condições de contorno homogêneas em [0,L] no ponto 'point'
+	  Obs.: é necessário declarar f, k, q como objetos da classe FUNÇÃO:
+		f = lambda x : "expressão" ou def f(x): return "expressão"
+
+    -- u_full(f, k, k_prime, q, a, b, L, point, n)
+	  input: funções f(x), k(x), k_prime(x), q(x), float a, b condições não homogêneas, L comprimento do intervalo, 
+          float point, inteiro n número de pontos
+	  output: valor de u_barra para condições de contorno não homogêneas em [0,L] no ponto 'point'
+	  Obs.: é necessário declarar f, k, k_prime, q como objetos da classe FUNÇÃO:
+		f = lambda x : "expressão" ou def f(x): return "expressão"
+
+- Funções Auxiliares
+  -- plot_basic(u_exact, f, n)
+	input: funções u_exact, f, inteiro n
+	output: plota as funções u e u_barra para o caso simplificado k = 1, q = 0, condições homogêneas em [0,1]
+
+  -- plot_L(u_exact, f, k, q, L, n)
+	input: funções u_exact, f, k, q, float L, inteiro n
+	output: plota as funções u e u_barra para o caso simplificado condições homogêneas em [0,L]
+
+  -- plot_full(u_exact, f, k, k_prime, q, a, b, L, n)
+	input: funções u_exact, f, k, k_prime, q, float a, b, L, inteiro n
+	output: plota as funções u e u_barra para o caso geral
+
